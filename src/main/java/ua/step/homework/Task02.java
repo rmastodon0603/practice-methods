@@ -8,12 +8,14 @@ package ua.step.homework;
  * • Возвращает содержимое массива в виде строки через заданный разделитель (перегруженный join)
  * • Сортирующий массив обратном порядке (без учёта регистра) от z до a (sortDesc);
  * • Сортирующий массив по количеству слов в строке (слова разделены пробелами) (sortByWordCount).
- *
+ * <p>
  * Примечание: Не использовать методы строк и стандартную сортировку
  */
 public class Task02 {
     public static void main(String[] args) {
         // TODO: Проверяйте методы здесь
+        String[] sentences = new String[]{"one two", "java", "I am free"};
+        sortByWordCount(sentences);
     }
 
     /**
@@ -24,7 +26,11 @@ public class Task02 {
      */
     public static String join(String[] strings) {
         // TODO: удалите исключение и пишите здесь код
-        throw new RuntimeException("Not implemented yet");
+        String string = strings[0];
+        for (int i = 1; i < strings.length; i++) {
+            string = string + " " + strings[i];
+        }
+        return string;
     }
 
     /**
@@ -36,7 +42,11 @@ public class Task02 {
      */
     public static String join(String[] strings, String glue) {
         // TODO: удалите исключение и пишите здесь код
-        throw new RuntimeException("Not implemented yet");
+        String string = strings[0];
+        for (int i = 1; i < strings.length; i++) {
+            string = string + glue + strings[i];
+        }
+        return string;
     }
 
     /**
@@ -46,7 +56,15 @@ public class Task02 {
      */
     public static void sortDesc(String[] strings) {
         // TODO: удалите исключение и пишите здесь код
-        throw new RuntimeException("Not implemented yet");
+        for (int i = 0; i < strings.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (strings[j].compareToIgnoreCase(strings[i]) < 0) {
+                    String tmp = strings[j];
+                    strings[j] = strings[i];
+                    strings[i] = tmp;
+                }
+            }
+        }
     }
 
     /**
@@ -56,6 +74,17 @@ public class Task02 {
      */
     public static void sortByWordCount(String[] strings) {
         // TODO: удалите исключение и пишите здесь код
-        throw new RuntimeException("Not implemented yet");
+        int count = 0;
+        for (int i = 0; i < strings.length; i++) {
+                System.out.println("Stroka " + i + " : " + strings[i]);
+                for (int j = 0; j<strings[i].length(); j++){
+                    System.out.println("Nomer bukvi - " + j);
+                    if(strings[i].charAt(j) == ' ') {
+                        count++;
+                    }
+                    System.out.println("Counted works in string: " + count);
+                    }
+                }
+
+        }
     }
-}
