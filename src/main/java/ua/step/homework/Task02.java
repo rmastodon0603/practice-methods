@@ -73,18 +73,48 @@ public class Task02 {
      * @param strings - массив строк для сортировки
      */
     public static void sortByWordCount(String[] strings) {
-        // TODO: удалите исключение и пишите здесь код
-        int count = 0;
-        for (int i = 0; i < strings.length; i++) {
-                System.out.println("Stroka " + i + " : " + strings[i]);
-                for (int j = 0; j<strings[i].length(); j++){
-                    System.out.println("Nomer bukvi - " + j);
-                    if(strings[i].charAt(j) == ' ') {
-                        count++;
-                    }
-                    System.out.println("Counted works in string: " + count);
+        for(int k = 0; k < strings.length; k++)
+        {
+            for (int i = 0; i < strings.length - 1; i++)
+            {
+                int counter = 0;
+                for (int j = 0; j < strings[i].length(); j++)
+                {
+                    if (strings[i].charAt(j) == ' ')
+                    {
+                        counter++;
                     }
                 }
 
+                counter = num(strings, counter, i);
+
+                if (counter == 1)
+                {
+                    String tmp = strings[i+1];
+                    strings[i+1] = strings[i];
+                    strings[i] = tmp;
+                }
+            }
         }
+    }
+    public static int num(String[] strings, int counterFirst, int i)
+    {
+        int counterSecond = 0;
+        for(int j = 0; j < strings[i+1].length(); j++)
+        {
+            if(strings[i+1].charAt(j) == ' ')
+            {
+                counterSecond++;
+            }
+        }
+
+        if(counterFirst > counterSecond)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+     }
     }
